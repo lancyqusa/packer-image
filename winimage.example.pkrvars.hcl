@@ -1,0 +1,9 @@
+project_id = "service-prj-390100"
+zone = "us-west1-a"
+subnetwork = "subnet-03"
+network_project_id = "vpc-host-prj-390100"
+image_project_id = "gcp-images-project"
+network = "lq-test-vpc"
+# tags = [ "lq2-fw-allow-icmp", "lq2-fw-allow-rdp","lq2-fw-allow-winrm", "lq2-fw-allow-iap"]
+tags = ["lq-test-windows"]
+image_name = "lq-win-2019-iis-image-1"
