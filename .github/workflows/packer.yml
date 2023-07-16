@@ -22,16 +22,8 @@ jobs:
         workload_identity_provider: ${{ inputs.WL_IDENTITY_PROVIDER }}
         service_account: ${{ inputs.SERVICE_ACCOUNT }}
 
-    - name: 'setup Packer'
+    - name: setup Packer
       uses: hashicorp/setup-packer@main
       id: setup
       with:
         version: ${{ env.PRODUCT_VERSION }}
-
-      - name: 'Run packer init'
-      id: init
-      run: "packer init -var-file=winimage.example.pkrvars.hcl ."
-
-      - name: 'Run packer validate'
-      id: validate
-      run: "packer validate -var-file=winimage.example.pkrvars.hcl ."
