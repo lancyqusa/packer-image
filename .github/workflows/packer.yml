@@ -30,3 +30,9 @@ jobs:
       id: setup
       with:
         version: ${{ env.PRODUCT_VERSION }}
+    - name: Run `packer init`
+      id: init
+      run: "packer init -var-file=winimage.example.pkrvars.hcl . "
+    - name: Run `packer build`
+      id: build
+      run: "packer build -var-file=winimage.example.pkrvars.hcl . "
