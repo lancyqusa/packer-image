@@ -1,0 +1,37 @@
+name: Build and Publish VM Image
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PRODUCT_VERSION: "1.8.6"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: run packer
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+
+    - name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth'
+      with:
+        workload_identity_provider: ${{ inputs.WL_IDENTITY_PROVIDER }}
+        service_account: ${{ inputs.SERVICE_ACCOUNT }}
+
+    - name: setup Packer
+      uses: hashicorp/setup-packer@main
+      id: setup
+      with:
+        version: ${{ env.PRODUCT_VERSION }}
+
+      - name: Run `packer init`
+      id: init
+      run: "packer init -var-file=winimage.example.pkrvars.hcl ."
+
+      - name: Run `packer validate`
+      id: validate
+      run: "packer validate -var-file=winimage.example.pkrvars.hcl ."
