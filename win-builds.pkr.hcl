@@ -16,6 +16,8 @@ source "googlecompute" "windows-template" {
   image_name = var.image_name
   instance_name = var.instance_name
   network = "example-vpc"
+  access_config = null
+  omit_external_ip = true
   network_project_id = var.network_project_id
   subnetwork = var.subnetwork
   zone = var.zone
