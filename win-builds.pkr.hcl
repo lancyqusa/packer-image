@@ -11,8 +11,8 @@ source "googlecompute" "windows-template" {
   project_id = var.project_id
   # image_project_id = var.image_project_id
   source_image = var.source_image
-  # use_internal_ip = true
-  # use_iap = true
+  use_internal_ip = true
+  use_iap = true
   image_name = var.image_name
   instance_name = var.instance_name
   network = "example-vpc"
